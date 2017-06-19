@@ -1,0 +1,11 @@
+izone-core-api-mssql:
+  image: microsoft/mssql-server-linux
+  environment:
+   - 'ACCEPT_EULA=Y'
+   - 'SA_PASSWORD=yourStrong(!)Password'
+  ports:
+   - '1433:1433'
+izone-core-api-rest:
+  build: .
+  ports:
+   - '5000:5000'

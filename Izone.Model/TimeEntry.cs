@@ -2,7 +2,8 @@
 
 namespace Izone.Model
 {
-    public class Class1
+    public class TimeEntry
     {
+        public string Description { get; set; }
     }
 }

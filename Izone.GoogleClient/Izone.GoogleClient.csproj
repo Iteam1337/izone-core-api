@@ -1,8 +1,0 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard1.4</TargetFramework>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.27.1.878" />
-  </ItemGroup>
-</Project>

@@ -29,6 +29,7 @@ namespace Izone.API
         {
             // Add framework services.
             services.AddMvc();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +39,7 @@ namespace Izone.API
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseCors(m => m.AllowAnyHeader());
         }
     }
 }

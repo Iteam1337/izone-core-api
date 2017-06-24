@@ -12,7 +12,7 @@ namespace Izone.API.Controllers
     {
         // POST api/values
         [HttpPost]
-        public SlackResponse Post([FromBody]string value)
+        public SlackResponse Post()
         {
             var response = new SlackResponse
             {

@@ -2,9 +2,9 @@ pipeline:
   docker:
     image: plugins/docker
     repo: iteam1337/izone
-    username: ${DOCKER_USER}
-    password: ${DOCKER_PASS}
-    email: ${DOCKER_EMAIL}
+    username: ${DOCKER_HUB_USER}
+    password: ${DOCKER_HUB_PASS}
+    email: ${DOCKER_HUB_EMAIL}
     tags: dotnet-core
   rancher:
     image: peloton/drone-rancher

@@ -12,6 +12,6 @@ pipeline:
     access_key: ${RANCHER_ACCESS_KEY}
     secret_key: ${RANCHER_SECRET_KEY}
     service: Izone/izone-rest
-    docker_image: iteam1337/izone:latest
+    docker_image: iteam1337/izone:dotnet-core
     confirm: true
     timeout: 120

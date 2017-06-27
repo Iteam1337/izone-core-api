@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace Izone.DB.Model
 {
@@ -15,7 +16,8 @@ namespace Izone.DB.Model
 
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
       {
-          optionsBuilder.UseSqlServer(@"Data Source=kritvit; Database=izone; User ID=izone-life; Password=3djeNovember;");
+          var connectionString = Environment.GetEnvironmentVariable("DB__CONNECTIONSTRING");
+          optionsBuilder.UseSqlServer(connectionString);
       }
     }
 

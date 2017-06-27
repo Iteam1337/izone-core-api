@@ -17,7 +17,11 @@ namespace Izone.DB.Model
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
       {
           var connectionString = Environment.GetEnvironmentVariable("DB__CONNECTIONSTRING");
+          if (string.IsNullOrEmpty(connectionString))
+            connectionString = @"Data Source=sql; Database=the-dev-db; User ID=sa; Password=password;";
+
           optionsBuilder.UseSqlServer(connectionString);
+
       }
     }
 

@@ -1,27 +1,27 @@
-izone-core-api-mssql:
+iz-sql:
   image: microsoft/mssql-server-linux
   environment:
    - 'ACCEPT_EULA=Y'
-   - 'SA_PASSWORD=ved-enozi'
+   - 'SA_PASSWORD=VED-enozi(!)'
   ports:
    - '1433:1433'
 
-izone-core-api-rest:
+iz-api:
   build: .
   environment:
-   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=ved-enozi;'
+   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi(!);'
   links:
-   - 'izone-core-api-mssql:sql'
+   - 'iz-sql:sql'
   ports:
    - '3001:3000'
 
-izone-core-migrations:
+iz-migrations:
   build: .
   command: 'bash -c "cd /opt/src/Izone.DB.Migrations && dotnet ef database update && sleep 3600"'
   environment:
-   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=ved-enozi;'
+   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi(!);'
   links:
-   - 'izone-core-api-mssql:sql'
+   - 'iz-sql:sql'
   ports:
    - '3000:3000'
 

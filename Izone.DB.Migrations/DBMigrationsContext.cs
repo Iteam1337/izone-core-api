@@ -13,7 +13,8 @@ namespace Izone.DB.Migrations
       {
           var connectionString = Environment.GetEnvironmentVariable("DB__CONNECTIONSTRING");
           if (string.IsNullOrEmpty(connectionString))
-            connectionString = @"Data Source=sql; Database=izone-dev; User ID=sa; Password=ved-enozi;";
+            connectionString = @"Data Source=sql; Database=the-dev-db; User ID=sa; Password=password;";
+
           optionsBuilder.UseSqlServer(connectionString);
       }
     }

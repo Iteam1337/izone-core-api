@@ -11,7 +11,10 @@ namespace Izone.DB.Migrations
 
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
       {
-          optionsBuilder.UseSqlServer(@"Data Source=sql; Database=izone-dev; User ID=sa; Password=ved-enozi;");
+          var connectionString = Environment.GetEnvironmentVariable("DB__CONNECTIONSTRING");
+          if (string.IsNullOrEmpty(connectionString))
+            connectionString = @"Data Source=sql; Database=izone-dev; User ID=sa; Password=ved-enozi;";
+          optionsBuilder.UseSqlServer(connectionString);
       }
     }
 

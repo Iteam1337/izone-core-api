@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Izone.Model;
+using Izone.DB;
 
 namespace Izone.API.Controllers
 {
@@ -14,9 +15,12 @@ namespace Izone.API.Controllers
         [HttpPost]
         public SlackResponse Post()
         {
+            IJobLogRepository jobLogRepository = new JobLogRepository();
+            var jobLogs = jobLogRepository.List();
+
             var response = new SlackResponse
             {
-                Text = "Meow!",
+                Text = "Your time entries for week <week>",
                 Attachments = new List<SlackResponse>()
             };
 
@@ -26,6 +30,15 @@ namespace Izone.API.Controllers
                 SlackColor = SlackColor.good
             };
             response.Attachments.Add(att);
+
+            foreach (var jobLog in jobLogs)
+            {
+                response.Attachments.Add(new SlackResponse
+                {
+                    Text = jobLog.Id.ToString(),
+                    SlackColor = SlackColor.warning
+                });
+            }
 
             return response;
         }

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Izone.Model\Izone.Model.csproj" />
+    <ProjectReference Include="..\Izone.DB\Izone.DB.csproj" />
   </ItemGroup>
 
 </Project>

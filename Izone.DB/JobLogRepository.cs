@@ -6,10 +6,6 @@ using Izone.DB.Model;
 
 namespace Izone.DB
 {
-    public interface IJobLogRepository {
-        List<JobLog> List();
-    }
-
     public class JobLogRepository : IJobLogRepository
     {
         public List<JobLog> List()

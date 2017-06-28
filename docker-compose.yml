@@ -22,4 +22,3 @@ iz-migrations:
    - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi();'
   links:
    - 'iz-sql:sql'
-

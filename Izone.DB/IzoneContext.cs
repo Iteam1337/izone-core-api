@@ -8,7 +8,7 @@ namespace Izone.DB
 {
     public class IzoneContext : DbContext
     {
-      public DbSet<JobLog> JobLogs { get; set; }
+      public DbSet<TimeEntry> TimeEntries { get; set; }
       public DbSet<Person> People { get; set; }
 
       public IzoneContext()

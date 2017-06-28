@@ -15,8 +15,8 @@ namespace Izone.API.Controllers
         [HttpPost]
         public SlackResponse Post([FromBody] SlackPayload payload)
         {
-            IJobLogRepository jobLogRepository = new JobLogRepository();
-            var jobLogs = jobLogRepository.List();
+            ITimeEntryRepository timeEntryRepository = new TimeEntryRepository();
+            var timeEntries = timeEntryRepository.List();
 
             var response = new SlackResponse
             {
@@ -24,11 +24,11 @@ namespace Izone.API.Controllers
                 Attachments = new List<SlackResponse>()
             };
 
-            foreach (var jobLog in jobLogs)
+            foreach (var timeEntry in timeEntries)
             {
                 response.Attachments.Add(new SlackResponse
                 {
-                    Text = string.Format("{0}: {1} h", jobLog.Alias, jobLog.Hours),
+                    Text = string.Format("{0}: {1} h", timeEntry.Alias, timeEntry.Hours),
                     SlackColor = SlackColor.danger
                 });
             }

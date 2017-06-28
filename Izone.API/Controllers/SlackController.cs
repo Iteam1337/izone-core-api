@@ -13,23 +13,16 @@ namespace Izone.API.Controllers
     {
         // POST api/values
         [HttpPost]
-        public SlackResponse Post()
+        public SlackResponse Post([FromBody] SlackPayload payload)
         {
             IJobLogRepository jobLogRepository = new JobLogRepository();
             var jobLogs = jobLogRepository.List();
 
             var response = new SlackResponse
             {
-                Text = "Your time entries for week <week>",
+                Text = "Your time entries for week <week>. " + payload.user_id + " " + payload.user_name,
                 Attachments = new List<SlackResponse>()
             };
-
-            var att = new SlackResponse
-            {
-                Text = "iteamvs: 4 h",
-                SlackColor = SlackColor.good
-            };
-            response.Attachments.Add(att);
 
             foreach (var jobLog in jobLogs)
             {
@@ -42,5 +35,11 @@ namespace Izone.API.Controllers
 
             return response;
         }
+    }
+
+    public class SlackPayload
+    {
+        public string user_id { get; set; }
+        public string user_name { get; set; }
     }
 }

@@ -35,8 +35,8 @@ namespace Izone.API.Controllers
             {
                 response.Attachments.Add(new SlackResponse
                 {
-                    Text = jobLog.Id.ToString(),
-                    SlackColor = SlackColor.warning
+                    Text = string.Format("{0}: {1} h", jobLog.Alias, jobLog.Hours),
+                    SlackColor = SlackColor.danger
                 });
             }
 

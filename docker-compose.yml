@@ -17,11 +17,9 @@ iz-api:
 
 iz-migrations:
   build: .
-  command: 'bash -c "cd /opt/src/Izone.DB.Migrations && dotnet ef database update && sleep 3600"'
+  command: 'bash -c "cd /opt/src/Izone.DB.Migrations && dotnet ef database update"'
   environment:
    - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi();'
   links:
    - 'iz-sql:sql'
-  ports:
-   - '3000:3000'
 

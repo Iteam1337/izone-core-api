@@ -2,14 +2,14 @@ iz-sql:
   image: microsoft/mssql-server-linux
   environment:
    - 'ACCEPT_EULA=Y'
-   - 'SA_PASSWORD=VED-enozi(!)'
+   - 'SA_PASSWORD=VED-enozi()'
   ports:
    - '1433:1433'
 
 iz-api:
   build: .
   environment:
-   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi(!);'
+   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi();'
   links:
    - 'iz-sql:sql'
   ports:
@@ -19,7 +19,7 @@ iz-migrations:
   build: .
   command: 'bash -c "cd /opt/src/Izone.DB.Migrations && dotnet ef database update && sleep 3600"'
   environment:
-   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi(!);'
+   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi();'
   links:
    - 'iz-sql:sql'
   ports:

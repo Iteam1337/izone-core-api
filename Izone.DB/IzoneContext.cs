@@ -2,8 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System;
+using Izone.Model;
 
-namespace Izone.DB.Model
+namespace Izone.DB
 {
     public class IzoneContext : DbContext
     {

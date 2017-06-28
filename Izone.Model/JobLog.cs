@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Izone.DB.Model
+namespace Izone.Model
 {
     [Table("job_log_db")]
     public class JobLog

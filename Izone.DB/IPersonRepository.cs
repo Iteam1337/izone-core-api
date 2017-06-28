@@ -1,4 +1,4 @@
-using Izone.DB.Model;
+using Izone.Model;
 using System.Collections.Generic;
 
 namespace Izone.DB

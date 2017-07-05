@@ -9,7 +9,7 @@ namespace Izone.Model
         [Column("jl_id")]
         public int Id { get; set; }
 
-        [Column("jl_id")]
+        [Column("jl_job_id")]
         public int JobId { get; set; }
 
         [Column("jl_alias")]

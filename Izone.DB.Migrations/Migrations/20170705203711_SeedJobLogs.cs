@@ -40,7 +40,6 @@ namespace Izone.DB.Migrations.Migrations
             migrationBuilder.Sql(@"
                 DELETE FROM job_log_db
                 WHERE 1 = 1
-                    AND jl_gcal_id = '0123456789abcdef'
             "
             );
         }

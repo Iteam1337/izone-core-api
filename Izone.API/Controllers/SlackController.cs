@@ -15,6 +15,8 @@ namespace Izone.API.Controllers
         [HttpPost]
         public SlackResponse Post([FromBody] SlackPayload payload)
         {
+            Console.WriteLine("Received POST request from Slack, or so I think anyway.", payload);
+
             ITimeEntryRepository timeEntryRepository = new TimeEntryRepository();
             var timeEntries = timeEntryRepository.List();
 

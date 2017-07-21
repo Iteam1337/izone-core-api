@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.API", "Izone.API\Izone.API.csproj", "{926EBEF0-2466-4F52-A005-2726065473C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ica.rest", "ica.rest\ica.rest.csproj", "{926EBEF0-2466-4F52-A005-2726065473C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.DB", "Izone.DB\Izone.DB.csproj", "{1125FAA9-786C-4719-B1B4-CA104732A1DD}"
 EndProject

@@ -12,4 +12,4 @@ ENV ASPNETCORE_URLS http://*:3000
 WORKDIR /opt/app
 
 EXPOSE 3000
-CMD ["dotnet", "/opt/app/Izone.API.dll", "--server.urls", "http://0.0.0.0:3000"]
+CMD ["dotnet", "/opt/app/ica.rest.dll", "--server.urls", "http://0.0.0.0:3000"]

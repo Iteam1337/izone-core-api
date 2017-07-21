@@ -2,7 +2,7 @@ using System;
 using Izone.DB;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Izone.API.Controllers
+namespace ica.rest.Controllers
 {
     [Route("/")]
     public class ApiController : Controller

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Izone.Model;
 using Izone.DB;
 
-namespace Izone.API.Controllers
+namespace ica.rest.Controllers
 {
     [Route("[controller]")]
     public class SlackController : Controller

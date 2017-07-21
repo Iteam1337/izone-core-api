@@ -7,5 +7,6 @@ namespace Izone.DB
 {
     public interface ITimeEntryRepository {
         List<TimeEntry> List();
+        double TotalHours();
     }
 }

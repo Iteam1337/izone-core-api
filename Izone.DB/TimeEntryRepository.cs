@@ -14,5 +14,13 @@ namespace Izone.DB
                 return db.TimeEntries.Take(10).ToList();
             }
         }
+
+        double ITimeEntryRepository.TotalHours()
+        {
+            using (var db = new IzoneContext())
+            {
+                return db.TimeEntries.Sum(x => x.Hours);
+            }
+        }
     }
 }

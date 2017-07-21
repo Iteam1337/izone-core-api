@@ -11,11 +11,11 @@ namespace Izone.API.Controllers
     [Route("[controller]")]
     public class SlackController : Controller
     {
-        // POST api/values
         [HttpPost]
         public SlackResponse Post([FromForm] SlackPayload payload)
         {
-            Console.WriteLine("Received POST request from Slack, or so I think anyway.", payload);
+            Console.WriteLine("Received POST request from Slack, or so I think anyway.");
+            Console.WriteLine("User ID: " + payload.user_id);
 
             ITimeEntryRepository timeEntryRepository = new TimeEntryRepository();
             var timeEntries = timeEntryRepository.List();

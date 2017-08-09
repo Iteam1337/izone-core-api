@@ -19,5 +19,11 @@ namespace ica.model
 
         [Column("p_email")]
         public string Email { get; set; }
+
+        [Column("p_slack_id")]
+        public string SlackId { get; set; }
+
+        [Column("p_slack_username")]
+        public string SlackUsername { get; set; }
     }
 }

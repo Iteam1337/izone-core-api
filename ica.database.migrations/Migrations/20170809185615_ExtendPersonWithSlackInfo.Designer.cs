@@ -8,9 +8,10 @@ using ica.database.migrations;
 namespace ica.database.migrations.Migrations
 {
     [DbContext(typeof(DBMigrationsContext))]
-    partial class DBMigrationsContextModelSnapshot : ModelSnapshot
+    [Migration("20170809185615_ExtendPersonWithSlackInfo")]
+    partial class ExtendPersonWithSlackInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

@@ -1,8 +1,8 @@
 using System.Linq;
-using Izone.Model;
+using ica.model;
 using System.Collections.Generic;
 
-namespace Izone.DB
+namespace ica.database
 {
     public class PersonRepository : IPersonRepository
     {

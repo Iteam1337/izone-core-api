@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Izone.Model
+namespace ica.model
 {
     public class SlackResponse
     {

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Izone.Model
+namespace ica.model
 {
     [Table("people_db")]
     public class Person

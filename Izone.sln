@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ica.rest", "ica.rest\ica.rest.csproj", "{926EBEF0-2466-4F52-A005-2726065473C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.DB", "Izone.DB\Izone.DB.csproj", "{1125FAA9-786C-4719-B1B4-CA104732A1DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.DB", "ica.database\ica.database.csproj", "{1125FAA9-786C-4719-B1B4-CA104732A1DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.Model", "Izone.Model\Izone.Model.csproj", "{DE0C2527-8109-46AA-A3B7-AC58886CDD33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ica.model", "ica.model\ica.model.csproj", "{DE0C2527-8109-46AA-A3B7-AC58886CDD33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.DB.Migrations", "Izone.DB.Migrations\Izone.DB.Migrations.csproj", "{FD940C2A-5C09-4661-AF05-342CAF6C2E15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Izone.DB.Migrations", "ica.database.migrations\ica.database.migrations.csproj", "{FD940C2A-5C09-4661-AF05-342CAF6C2E15}"
 EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution

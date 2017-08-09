@@ -3,14 +3,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Izone.DB.Migrations;
+using ica.database.migrations;
 
-namespace Izone.DB.Migrations.Migrations
+namespace ica.database.migrations.Migrations
 {
     [DbContext(typeof(DBMigrationsContext))]
-    partial class DBMigrationsContextModelSnapshot : ModelSnapshot
+    [Migration("20170628072455_ExtendJobLogs")]
+    partial class ExtendJobLogs
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

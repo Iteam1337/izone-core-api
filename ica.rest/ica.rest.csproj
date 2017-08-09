@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Izone.Model\Izone.Model.csproj" />
-    <ProjectReference Include="..\Izone.DB\Izone.DB.csproj" />
+    <ProjectReference Include="..\ica.model\ica.model.csproj" />
+    <ProjectReference Include="..\ica.database\ica.database.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Izone.DB.Migrations.Migrations
+namespace ica.database.migrations.Migrations
 {
     public partial class ExtendJobLogs : Migration
     {

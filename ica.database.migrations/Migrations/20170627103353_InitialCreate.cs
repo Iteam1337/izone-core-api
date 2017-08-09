@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Izone.DB.Migrations.Migrations
+namespace ica.database.migrations.Migrations
 {
     public partial class InitialCreate : Migration
     {

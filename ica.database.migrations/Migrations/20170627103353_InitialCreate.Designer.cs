@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Izone.DB.Migrations;
+using ica.database.migrations;
 
-namespace Izone.DB.Migrations.Migrations
+namespace ica.database.migrations.Migrations
 {
     [DbContext(typeof(DBMigrationsContext))]
-    [Migration("20170705203711_SeedJobLogs")]
-    partial class SeedJobLogs
+    [Migration("20170627103353_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

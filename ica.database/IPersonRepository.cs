@@ -1,7 +1,7 @@
-using Izone.Model;
+using ica.model;
 using System.Collections.Generic;
 
-namespace Izone.DB
+namespace ica.database
 {
     interface IPersonRepository
     {

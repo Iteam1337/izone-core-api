@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Izone.Model
+namespace ica.model
 {
     [Table("job_log_db")]
     public class TimeEntry

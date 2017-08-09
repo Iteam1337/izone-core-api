@@ -1,13 +1,20 @@
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+using System;
+using ica.model;
 
-namespace Izone.DB.Migrations
+namespace ica.database
 {
-    public class DBMigrationsContext : DbContext
+    public class IzoneContext : DbContext
     {
-      public DbSet<JobLog> JobLogs { get; set; }
+      public DbSet<TimeEntry> TimeEntries { get; set; }
+      public DbSet<Person> People { get; set; }
+
+      public IzoneContext()
+      {
+          Database.SetCommandTimeout(150000);
+      }
 
       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
       {
@@ -16,13 +23,7 @@ namespace Izone.DB.Migrations
             connectionString = @"Data Source=sql; Database=the-dev-db; User ID=sa; Password=password;";
 
           optionsBuilder.UseSqlServer(connectionString);
-      }
-    }
 
-    [Table("job_log_db")]
-    public class JobLog
-    {
-        [Column("jl_id")]
-        public int Id { get; set; }
+      }
     }
 }

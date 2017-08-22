@@ -14,8 +14,8 @@ namespace ica.database.migrations.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn<string>("p_slack_id", "people_db");
-            migrationBuilder.DropColumn<string>("p_slack_username", "people_db");
+            migrationBuilder.DropColumn("p_slack_id", "people_db");
+            migrationBuilder.DropColumn("p_slack_username", "people_db");
         }
     }
 }

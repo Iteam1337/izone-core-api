@@ -7,7 +7,7 @@ WORKDIR /opt/src
 
 RUN dotnet build
 RUN dotnet publish -o /opt/app
-RUN rm -fr /opt/src
+RUN rm -fr ./!ica.database.migrations
 
 WORKDIR /opt/app
 

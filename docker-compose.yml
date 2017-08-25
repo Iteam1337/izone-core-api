@@ -17,7 +17,7 @@ iz-api:
 
 iz-migrations:
   build: .
-  command: 'bash -c "cd /opt/src/ica.database.migrations && dotnet ef database update"'
+  command: 'bash -c "cd /opt/src/ica.database.migrations app && dotnet ef database update"'
   environment:
    - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi()!;'
   links:

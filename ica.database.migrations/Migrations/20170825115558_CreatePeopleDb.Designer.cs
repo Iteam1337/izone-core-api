@@ -10,9 +10,10 @@ using System;
 namespace ica.database.migrations.Migrations
 {
     [DbContext(typeof(DBMigrationsContext))]
-    partial class DBMigrationsContextModelSnapshot : ModelSnapshot
+    [Migration("20170825115558_CreatePeopleDb")]
+    partial class CreatePeopleDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

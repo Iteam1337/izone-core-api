@@ -11,18 +11,31 @@ namespace ica.rest.Controllers
     [Route("[controller]")]
     public class SlackController : Controller
     {
+        public readonly IPersonRepository _personRepository;
+        public readonly ITimeEntryRepository _timeEntryRepository;
+
+        public SlackController(IPersonRepository personRepository, ITimeEntryRepository timeEntryRepository)
+        {
+            _personRepository = personRepository;
+            _timeEntryRepository = timeEntryRepository;
+        }
+
         [HttpPost]
         public SlackResponse Post([FromForm] SlackPayload payload)
         {
             Console.WriteLine("Received POST request from Slack, or so I think anyway.");
             Console.WriteLine("User ID: " + payload.user_id);
 
-            ITimeEntryRepository timeEntryRepository = new TimeEntryRepository();
-            var timeEntries = timeEntryRepository.List();
+            var person = _personRepository.GetBySlackId(payload.user_id);
+
+            Console.WriteLine("Found user " + person.Firstname + " " + person.Lastname);
+
+            // ITimeEntryRepository timeEntryRepository = new TimeEntryRepository();
+            var timeEntries = _timeEntryRepository.List();
 
             var response = new SlackResponse
             {
-                Text = "Your time entries for week <week>. " + payload.user_id + " " + payload.user_name,
+                Text = "Your time entries for week <week>. " + payload.user_id + " " + payload.user_name + " n: " + person.Firstname,
                 Attachments = new List<SlackResponse>()
             };
 

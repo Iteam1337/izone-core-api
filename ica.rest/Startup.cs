@@ -33,6 +33,7 @@ namespace ica.rest
             services.AddCors();
 
             // Add application services.
+            services.AddTransient<IPersonRepository, PersonRepository>();
             services.AddTransient<ITimeEntryRepository, TimeEntryRepository>();
         }
 

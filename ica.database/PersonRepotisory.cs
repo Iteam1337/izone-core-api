@@ -13,5 +13,13 @@ namespace ica.database
                 return db.People.ToList();
             }
         }
+
+        public Person GetBySlackId(string slackId)
+        {
+            using (var db = new IzoneContext())
+            {
+                return db.People.Where(x => x.SlackId == slackId).FirstOrDefault();
+            }
+        }
     }
 }

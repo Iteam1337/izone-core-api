@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ica.model;
+using ica.model.REST;
 using ica.database;
 
 namespace ica.rest.Controllers
@@ -21,23 +22,28 @@ namespace ica.rest.Controllers
         }
 
         [HttpPost]
-        public SlackResponse Post([FromForm] SlackPayload payload)
+        public SlackResponse Post([FromForm] SlackRequestPayload payload)
         {
-            Console.WriteLine("Received POST request from Slack, or so I think anyway.");
+            Console.WriteLine("Received POST /slack");
             Console.WriteLine("User ID: " + payload.user_id);
+            Console.WriteLine("Username: " + payload.user_name);
 
-            var person = _personRepository.GetBySlackId(payload.user_id);
+            var person = GetPerson(payload.user_id, payload.user_name);
 
-            Console.WriteLine("Found user " + person.Firstname + " " + person.Lastname);
+            Console.WriteLine("Mapped user to Person " + person.Firstname + " " + person.Lastname);
 
-            // ITimeEntryRepository timeEntryRepository = new TimeEntryRepository();
             var timeEntries = _timeEntryRepository.List();
 
             var response = new SlackResponse
             {
-                Text = "Your time entries for week <week>. " + payload.user_id + " " + payload.user_name + " n: " + person.Firstname,
+                Text = "Izone week <week>.",
                 Attachments = new List<SlackResponse>()
             };
+
+            response.Attachments.Add(new SlackResponse
+            {
+                Text = string.Format("{0} {1} ({2})", person.Firstname, person.Lastname, person.IzoneUsername)
+            });
 
             foreach (var timeEntry in timeEntries)
             {
@@ -50,11 +56,22 @@ namespace ica.rest.Controllers
 
             return response;
         }
-    }
 
-    public class SlackPayload
-    {
-        public string user_id { get; set; }
-        public string user_name { get; set; }
+        Person GetPerson(string slackId, string slackUsername)
+        {
+            var person = _personRepository.GetBySlackId(slackId);
+
+            if (person == null)
+                person = _personRepository.GetBySlackUsername(slackUsername);
+            
+            if (person == null)
+                throw new Exception(string.Format("Could not find a person having SlackId {0} or SlackUsername {1}", slackId, slackUsername));
+            
+            // Update Person and save SlackId.
+            person.SlackId = slackId;
+            _personRepository.SetSlackId(person);
+
+            return person;
+        }
     }
 }

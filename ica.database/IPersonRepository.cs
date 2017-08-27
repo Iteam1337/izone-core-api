@@ -7,5 +7,8 @@ namespace ica.database
     {
         List<Person> List();
         Person GetBySlackId(string slackId);
+        Person GetBySlackUsername(string slackUserName);
+
+        void SetSlackId(Person person);
     }
 }

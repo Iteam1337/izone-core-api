@@ -6,6 +6,7 @@ WORKDIR /opt/src
 # Build.
 
 RUN dotnet build
+RUN dotnet test ica.rest.tests/ica.rest.tests.csproj
 RUN dotnet publish -o /opt/app
 RUN rm -fr ./!ica.database.migrations
 

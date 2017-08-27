@@ -22,10 +22,10 @@ namespace ica.database.migrations.Migrations
                 VALUES
                 (
                      1
-                    ,'Kisse'
-                    ,'Katt'
-                    ,'cat'
-                    ,'cat@iteam.se'
+                    ,'Alexander'
+                    ,'Czigler'
+                    ,'acr'
+                    ,'acr@iteam.se'
                     ,'U0260BV6S'
                     ,'ilix'
                 )

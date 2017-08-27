@@ -9,3 +9,17 @@ This is an API used to connect our daily lives (i.e. Slack) with our time report
 ## Slack
 
 The SlackController holds endpoints for slash commands in Slack. They are using features that requires your slash commands to be setup in the context of a Slack App.
+
+## Getting started
+
+### Running
+
+```
+docker-compose up --build
+```
+
+### Tests
+
+```
+dotnet test ica.rest.tests/ica.rest.tests.csproj
+```

@@ -8,17 +8,10 @@ iz-sql:
 
 iz-api:
   build: .
+  command: 'bash -c "cd /opt/src/ica.database.migrations app && dotnet ef database update && cd /opt/app && dotnet /opt/app/ica.rest.dll --server.urls http://0.0.0.0:3000"'
   environment:
    - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi()!;'
   links:
    - 'iz-sql:sql'
   ports:
    - '3001:3000'
-
-iz-migrations:
-  build: .
-  command: 'bash -c "cd /opt/src/ica.database.migrations app && dotnet ef database update"'
-  environment:
-   - 'DB__CONNECTIONSTRING=Data Source=sql; Database=izone-dev; User ID=sa; Password=VED-enozi()!;'
-  links:
-   - 'iz-sql:sql'

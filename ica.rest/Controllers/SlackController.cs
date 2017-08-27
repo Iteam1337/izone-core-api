@@ -36,14 +36,9 @@ namespace ica.rest.Controllers
 
             var response = new SlackResponse
             {
-                Text = "Izone week <week>.",
+                Text = person.IzoneUsername.ToUpper() + " week <week>.",
                 Attachments = new List<SlackResponse>()
             };
-
-            response.Attachments.Add(new SlackResponse
-            {
-                Text = string.Format("{0} {1} ({2})", person.Firstname, person.Lastname, person.IzoneUsername)
-            });
 
             foreach (var timeEntry in timeEntries)
             {

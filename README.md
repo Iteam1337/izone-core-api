@@ -12,7 +12,9 @@ The SlackController holds endpoints for slash commands in Slack. They are using 
 
 ## Getting started
 
-### Running
+The project is using dotnet core 2.0 and it is recommended that you have docker and docker-compose installed. You can use a traditional SQL Server installation or you can simply run the docker-compose stack to get a containerized SQL Server.
+
+### Running the stack locally
 
 ```
 docker-compose up --build

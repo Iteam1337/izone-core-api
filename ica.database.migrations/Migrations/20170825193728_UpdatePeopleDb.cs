@@ -8,7 +8,7 @@ namespace ica.database.migrations.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>("p_id", "people_db");
+            migrationBuilder.AddColumn<int>("p_id", "people_db");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

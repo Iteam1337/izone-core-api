@@ -99,7 +99,7 @@ namespace ica.rest.tests.Controllers
             var response =_slackController.Post(payload);
             response.Text.Should().Be("Something went wrong.");
             response.Attachments[0].SlackColor.Should().Be(SlackColor.danger);
-            response.Attachments[0].Text.Should().Be(string.Format("Could not find a person having SlackId {0} or SlackUsername {1}", payload.user_id, payload.user_name));
+            response.Attachments[0].Text.Should().Be(string.Format("Your account needs to be setup in izone before you can use this command. <{0}|{1}>", payload.user_name, payload.user_id));
         }
     }
 }

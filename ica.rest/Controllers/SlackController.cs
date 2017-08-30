@@ -28,17 +28,26 @@ namespace ica.rest.Controllers
             Console.WriteLine("User ID: " + payload.user_id);
             Console.WriteLine("Username: " + payload.user_name);
 
+            var response = new SlackResponse
+            {
+                Attachments = new List<SlackResponse>()
+            };
+
             var person = GetPerson(payload.user_id, payload.user_name);
 
-            Console.WriteLine("Mapped user to Person " + person.Firstname + " " + person.Lastname);
+            if (person == null) {
+                response.Text = "Something went wrong.";
+                response.Attachments.Add(new SlackResponse
+                {
+                    Text = string.Format("Could not find a person having SlackId {0} or SlackUsername {1}", payload.user_id, payload.user_name),
+                    SlackColor = SlackColor.danger
+                });
+                return response;
+            }
 
             var timeEntries = _timeEntryRepository.List();
 
-            var response = new SlackResponse
-            {
-                Text = string.Format("Week {0} for {1} ({2} {3})", "<week>", person.IzoneUsername.ToUpper(), person.Firstname, person.Lastname),
-                Attachments = new List<SlackResponse>()
-            };
+            response.Text = string.Format("Week {0} for {1} ({2} {3})", "<week>", person.IzoneUsername.ToUpper(), person.Firstname, person.Lastname);
 
             foreach (var timeEntry in timeEntries)
             {
@@ -56,15 +65,16 @@ namespace ica.rest.Controllers
         {
             var person = _personRepository.GetBySlackId(slackId);
 
-            if (person == null)
-                person = _personRepository.GetBySlackUsername(slackUsername);
+            if (person != null)
+                return person;
+
+            person = _personRepository.GetBySlackUsername(slackUsername);
             
-            if (person == null)
-                throw new Exception(string.Format("Could not find a person having SlackId {0} or SlackUsername {1}", slackId, slackUsername));
-            
-            // Update Person and save SlackId.
-            person.SlackId = slackId;
-            _personRepository.SetSlackId(person);
+            if (person != null) {   
+                // Update Person and save SlackId.
+                person.SlackId = slackId;
+                _personRepository.SetSlackId(person);
+            }
 
             return person;
         }

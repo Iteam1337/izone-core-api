@@ -56,5 +56,50 @@ namespace ica.rest.tests.Controllers
             _slackController.Post(payload);
             _timeEntryRepository.Verify(x => x.List(), Times.Once());
         }
+
+        [Fact]
+        public void POST_slack_attempts_to_get_user_by_name_if_not_found_by_id()
+        {
+            var req = new SlackRequestPayload
+            {
+                user_id = "some id",
+                user_name = "some name"
+            };
+
+            _personRepository.Setup(x => x.GetBySlackId(req.user_id)).Returns<Person>(null);
+            _personRepository.Setup(x => x.GetBySlackUsername(req.user_name)).Returns(person);
+
+            _slackController.Post(req);
+            _personRepository.Verify(x => x.GetBySlackId(req.user_id), Times.Once());
+            _personRepository.Verify(x => x.GetBySlackUsername(req.user_name), Times.Once());
+        }
+
+        [Fact]
+        public void POST_slack_attempts_to_update_Person_with_id_if_user_was_mapped_using_name()
+        {
+            var req = new SlackRequestPayload
+            {
+                user_id = "some id",
+                user_name = "some name"
+            };
+
+            _personRepository.Setup(x => x.GetBySlackId(req.user_id)).Returns<Person>(null);
+            _personRepository.Setup(x => x.GetBySlackUsername(req.user_name)).Returns(person);
+
+            _slackController.Post(req);
+            _personRepository.Verify(x => x.SetSlackId(It.IsAny<Person>()), Times.Once());
+        }
+
+        [Fact]
+        public void POST_slack_returns_proper_error_message_if_no_Person_can_be_mapped()
+        {
+            _personRepository.Setup(x => x.GetBySlackId(It.IsAny<string>())).Returns<Person>(null);
+            _personRepository.Setup(x => x.GetBySlackUsername(It.IsAny<string>())).Returns<Person>(null);
+
+            var response =_slackController.Post(payload);
+            response.Text.Should().Be("Something went wrong.");
+            response.Attachments[0].SlackColor.Should().Be(SlackColor.danger);
+            response.Attachments[0].Text.Should().Be(string.Format("Could not find a person having SlackId {0} or SlackUsername {1}", payload.user_id, payload.user_name));
+        }
     }
 }

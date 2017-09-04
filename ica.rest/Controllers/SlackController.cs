@@ -39,7 +39,7 @@ namespace ica.rest.Controllers
                 response.Text = "Something went wrong.";
                 response.Attachments.Add(new SlackResponse
                 {
-                    Text = string.Format("Could not find a person having SlackId {0} or SlackUsername {1}", payload.user_id, payload.user_name),
+                    Text = string.Format("Your account needs to be setup in izone before you can use this command. <{0}|{1}>", payload.user_name, payload.user_id),
                     SlackColor = SlackColor.danger
                 });
                 return response;
